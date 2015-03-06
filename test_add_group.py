@@ -19,9 +19,10 @@ class test_add_group(unittest.TestCase):
         success = True
         wd = self.wd
         wd.get("http://localhost/addressbook/group.php")
-        if wd.find_element_by_name("user").get_attribute("value") != "admin":
-            success = False
-            print("verifyElementValue failed")
+        wd.find_element_by_name("user").click()
+        wd.find_element_by_name("user").clear()
+        wd.find_element_by_name("user").send_keys("admin")
+        wd.find_element_by_id("LoginForm").click()
         wd.find_element_by_name("pass").click()
         wd.find_element_by_name("pass").clear()
         wd.find_element_by_name("pass").send_keys("secret")
@@ -29,13 +30,13 @@ class test_add_group(unittest.TestCase):
         wd.find_element_by_name("new").click()
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
-        wd.find_element_by_name("group_name").send_keys("Groupe3")
+        wd.find_element_by_name("group_name").send_keys("Groupe4")
         wd.find_element_by_name("group_header").click()
         wd.find_element_by_name("group_header").clear()
-        wd.find_element_by_name("group_header").send_keys("Mygroupe header")
+        wd.find_element_by_name("group_header").send_keys("Groun")
         wd.find_element_by_name("group_footer").click()
         wd.find_element_by_name("group_footer").clear()
-        wd.find_element_by_name("group_footer").send_keys("MyGroupe footer")
+        wd.find_element_by_name("group_footer").send_keys("groupe")
         wd.find_element_by_name("submit").click()
         wd.find_element_by_link_text("group page").click()
         wd.find_element_by_link_text("Logout").click()
