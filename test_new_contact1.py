@@ -2,6 +2,7 @@
 from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest
+
 from group import Groups
 
 def is_alert_present(wd):
@@ -81,16 +82,16 @@ class test_new_contact(unittest.TestCase):
     def test_test_new_contact(self):
             success = True
             wd = self.wd
-                self.open_home_page(wd)
-                self.login(wd, username="admin",password= "secret")
-                self.init_new_contact(wd)
-                self.fill_form(wd, Groups(first_n= "first",midd_n= "middle",last_n= "last",nick_n= "kuk",company= "adda",address= "575 oiweojdckjgsd,russia",home_ph= "12134519827",
-                     cell_ph= "120092340980",email= "first.lastmiddle.@adda.com"))
-                self.fill_drop_down_boxes(wd)
-                self.fill_end_form(wd)
-                self.enter(wd)
-                self.logout(wd)
-                self.assertTrue(success)
+            self.open_home_page(wd)
+            self.login(wd, username="admin",password= "secret")
+            self.init_new_contact(wd)
+            self.fill_form(wd, Groups(first_n= "first",midd_n= "middle",last_n= "last",nick_n= "kuk",company= "adda",address= "575 oiweojdckjgsd,russia",home_ph= "12134519827",
+                cell_ph= "120092340980",email= "first.lastmiddle.@adda.com"))
+            self.fill_drop_down_boxes(wd)
+            self.fill_end_form(wd)
+            self.enter(wd)
+            self.logout(wd)
+            self.assertTrue(success)
 
     def tearDown(self):
         self.wd.quit()
