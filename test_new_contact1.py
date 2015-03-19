@@ -3,7 +3,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest
 
-from group import Groups
+from group import Contact
 
 def is_alert_present(wd):
     try:
@@ -32,35 +32,35 @@ class test_new_contact(unittest.TestCase):
     def init_new_contact(self, wd):
              wd.find_element_by_link_text("add new").click()
 
-    def fill_form(self, wd, Groups):
+    def fill_form(self, wd, Contacts):
             wd.find_element_by_name("firstname").click()
             wd.find_element_by_name("firstname").clear()
-            wd.find_element_by_name("firstname").send_keys(Groups.first_n)
+            wd.find_element_by_name("firstname").send_keys(Contact.first_n)
             wd.find_element_by_name("middlename").click()
             wd.find_element_by_name("middlename").clear()
-            wd.find_element_by_name("middlename").send_keys(Groups.midd_n)
+            wd.find_element_by_name("middlename").send_keys(Contact.mid_n)
             wd.find_element_by_name("lastname").click()
             wd.find_element_by_name("lastname").clear()
-            wd.find_element_by_name("lastname").send_keys(Groups.last_n)
+            wd.find_element_by_name("lastname").send_keys(Contact.last_n)
             wd.find_element_by_name("nickname").click()
             wd.find_element_by_name("nickname").clear()
-            wd.find_element_by_name("nickname").send_keys(Groups.nick_n)
+            wd.find_element_by_name("nickname").send_keys(Contact.nick_n)
             wd.find_element_by_name("company").click()
             wd.find_element_by_name("company").clear()
-            wd.find_element_by_name("company").send_keys(Groups.company)
+            wd.find_element_by_name("company").send_keys(Contact.company)
             wd.find_element_by_name("address").click()
             wd.find_element_by_name("address").clear()
-            wd.find_element_by_name("address").send_keys(Groups.address)
+            wd.find_element_by_name("address").send_keys(Contact.address)
             wd.find_element_by_name("theform").click()
             wd.find_element_by_name("home").click()
             wd.find_element_by_name("home").clear()
-            wd.find_element_by_name("home").send_keys(Groups.home_ph)
+            wd.find_element_by_name("home").send_keys(Contact.home_ph)
             wd.find_element_by_name("mobile").click()
             wd.find_element_by_name("mobile").clear()
-            wd.find_element_by_name("mobile").send_keys(Groups.cell_ph)
+            wd.find_element_by_name("mobile").send_keys(Contact.cell_ph)
             wd.find_element_by_name("email").click()
             wd.find_element_by_name("email").clear()
-            wd.find_element_by_name("email").send_keys(Groups.email)
+            wd.find_element_by_name("email").send_keys(Contact.email)
 
     def fill_drop_down_boxes(self, wd):
         if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[3]").is_selected():
@@ -85,7 +85,7 @@ class test_new_contact(unittest.TestCase):
             self.open_home_page(wd)
             self.login(wd, username="admin",password= "secret")
             self.init_new_contact(wd)
-            self.fill_form(wd, Groups(first_n= "first",midd_n= "middle",last_n= "last",nick_n= "kuk",company= "adda",address= "575 oiweojdckjgsd,russia",home_ph= "12134519827",
+            self.fill_form(wd, Contact(first_n= "first",midd_n= "middle",last_n= "last",nick_n= "kuk",company= "adda",address= "575 oiweojdckjgsd,russia",home_ph= "12134519827",
                 cell_ph= "120092340980",email= "first.lastmiddle.@adda.com"))
             self.fill_drop_down_boxes(wd)
             self.fill_end_form(wd)

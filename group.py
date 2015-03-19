@@ -5,7 +5,7 @@ class Group:
         self.header = header
         self.footer = footer
 
-class Groups:
+class Contact:
 
     def __init__(self, first_n, mid_n, last_n, nick_n, company, address, home_ph, cell_ph, email):
         self.first_n=first_n
