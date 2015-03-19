@@ -7,9 +7,9 @@ class Group:
 
 class Groups:
 
-    def __init__(self, first_n, midd_n, last_n, nick_n, company, address, home_ph, cell_ph, email):
+    def __init__(self, first_n, mid_n, last_n, nick_n, company, address, home_ph, cell_ph, email):
         self.first_n=first_n
-        self.midd_n=midd_n
+        self.mid_n=mid_n
         self.last_n=last_n
         self.nick_n=nick_n
         self.company=company
