@@ -3,7 +3,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest
 
-from group import Contact
+from contact import Contact
 
 def is_alert_present(wd):
     try:
@@ -32,7 +32,7 @@ class test_new_contact(unittest.TestCase):
     def init_new_contact(self, wd):
              wd.find_element_by_link_text("add new").click()
 
-    def fill_form(self, wd, Contacts):
+    def fill_form(self, wd, Contact):
             wd.find_element_by_name("firstname").click()
             wd.find_element_by_name("firstname").clear()
             wd.find_element_by_name("firstname").send_keys(Contact.first_n)
@@ -85,7 +85,7 @@ class test_new_contact(unittest.TestCase):
             self.open_home_page(wd)
             self.login(wd, username="admin",password= "secret")
             self.init_new_contact(wd)
-            self.fill_form(wd, Contact(first_n= "first",midd_n= "middle",last_n= "last",nick_n= "kuk",company= "adda",address= "575 oiweojdckjgsd,russia",home_ph= "12134519827",
+            self.fill_form(wd, Contact(first_n= "first",mid_n= "middle",last_n= "last",nick_n= "kuk",company= "adda",address= "575 oiweojdckjgsd,russia",home_ph= "12134519827",
                 cell_ph= "120092340980",email= "first.lastmiddle.@adda.com"))
             self.fill_drop_down_boxes(wd)
             self.fill_end_form(wd)
