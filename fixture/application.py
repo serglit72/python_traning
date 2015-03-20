@@ -9,6 +9,8 @@ class Application:
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
         self.session = SessionHelper(self)
+
+
     def open_home_page(self):
         # open home page
        wd = self.wd
@@ -20,6 +22,7 @@ class Application:
         wd = self.wd
         self.open_groups_page()
         wd.find_element_by_name("new").click()
+
 
     def create_fill_group_form(self,group):
         # create and fill group form
@@ -37,6 +40,8 @@ class Application:
         wd.find_element_by_name("submit").click()
         self.open_groups_page()
         self.return_to_group_page()
+
+
     def return_to_group_page(self):
         # return to groups page
         wd = self.wd

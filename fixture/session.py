@@ -19,7 +19,7 @@ class SessionHelper:
         wd.find_element_by_css_selector("input[type=\"submit\"]").click()
 
 
-   def logout(self):
+    def logout(self):
         # logout
         wd = self.app.wd
         wd.find_element_by_link_text("Logout").click()

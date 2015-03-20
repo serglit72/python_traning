@@ -3,7 +3,7 @@ from selenium.webdriver.firefox.webdriver import WebDriver
 from selenium.webdriver.common.action_chains import ActionChains
 import unittest
 
-from contact import Contact
+from model.contact import Contact
 
 def is_alert_present(wd):
     try:
