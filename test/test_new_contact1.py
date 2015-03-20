@@ -16,8 +16,12 @@ class test_new_contact(unittest.TestCase):
     def setUp(self):
             self.wd = WebDriver()
             self.wd.implicitly_wait(60)
+
+
     def open_home_page(self, wd):
             wd.get("http://localhost/addressbook/")
+
+
     def login(self, wd, username, password):
             wd.find_element_by_name("user").click()
             wd.find_element_by_name("user").clear()
@@ -31,6 +35,7 @@ class test_new_contact(unittest.TestCase):
 
     def init_new_contact(self, wd):
              wd.find_element_by_link_text("add new").click()
+
 
     def fill_form(self, wd, Contact):
             wd.find_element_by_name("firstname").click()
