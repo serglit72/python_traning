@@ -106,4 +106,4 @@ class Application:
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys("1970")
 
-   
+
