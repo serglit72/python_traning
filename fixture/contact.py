@@ -49,4 +49,13 @@ class ContactHelper:
         wd.find_element_by_name("byear").click()
         wd.find_element_by_name("byear").clear()
         wd.find_element_by_name("byear").send_keys("1970")
+        wd.find_element_by_name("submit").click()
+
+    def contact_delete(self):
+        wd = self.app.wd
+        wd.get("http://localhost/addressbook/")
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
+        wd.switch_to_alert().accept()
+
 

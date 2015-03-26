@@ -31,8 +31,6 @@ class GroupHelper:
          self.open_groups_page()
         #select group
          wd.find_element_by_name("selected[]").click()
-         wd.find_element_by_name("selected[]").click()
-         wd.find_element_by_name("selected[]").click()
         #delete group
          wd.find_element_by_name("delete").click()
 
