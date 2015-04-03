@@ -9,18 +9,6 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
 
-    def change_field_value(self, field_name, text):
-        wd = self.app.wd
-        if text is not None:
-            wd.find_element_by_name(field_name).click()
-            wd.find_element_by_name(field_name).clear()
-            wd.find_element_by_name(field_name).send_keys(text)
-
-  #  def fill_group_form(self, group):
-   #     wd = self.app.wd
-   #     self.change_field_value("group_name", group.name)
-  #      self.change_field_value("group_header", group.header)
-   #     self.change_field_value("group_footer", group.footer)
 
     def change_field_valueee(self, field_name, text):
         wd = self.app.wd
@@ -36,13 +24,10 @@ class GroupHelper:
         self.change_field_valueee("group_footer", group.footer)
 
 
-    def create(self,group):
+    def create(self, group):
         wd = self.app.wd
         self.open_groups_page()
         wd.find_element_by_name("new").click()
-       # self.fill_group_form(group)
-        #self.fill_group_form(group)
-        #submit group creation
         wd.find_element_by_name("submit").click()
         self.return_to_group_page()
 
