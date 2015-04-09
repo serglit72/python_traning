@@ -28,6 +28,7 @@ class GroupHelper:
         wd = self.app.wd
         self.open_groups_page()
         wd.find_element_by_name("new").click()
+        self.fill_group_form(group)
         wd.find_element_by_name("submit").click()
         self.return_to_group_page()
 
@@ -35,9 +36,6 @@ class GroupHelper:
         wd = self.app.wd
         wd.find_element_by_name("selected[]").click()
 
-    def select_first_group(self):
-        wd = self.app.wd
-        self.select_first_groupp()
 
     def del_first_group(self):
         wd = self.app.wd
@@ -50,12 +48,15 @@ class GroupHelper:
     def return_to_group_page(self):
         # return to groups page
         wd = self.app.wd
-        wd.find_element_by_link_text("group page").click()
+        wd.find_element_by_link_text("groups").click()
+
 
     def test_edit_group(self):
         wd = self.app.wd
-    #    wd.get("http://localhost/addressbook/")
+#        wd.get("http://localhost/addressbook/")
         self.open_groups_page()
+        self.select_first_groupp()
+ #       wd.find_element_by_name("edit").click()
         wd.find_element_by_xpath("//div[@id='content']/form/input[6]").click()
         wd.find_element_by_name("group_name").click()
         wd.find_element_by_name("group_name").clear()
@@ -80,3 +81,16 @@ class GroupHelper:
         self.fill_group_form(new_group_data)
         wd.find_element_by_name("update").click()
         self.return_to_group_page()
+
+    def count(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        return len(wd.find_elements_by_name("selected[]"))
+
+    def count_head(self):
+        wd = self.app.wd
+        self.open_groups_page()
+        wd.find_element_by_name("selected[]").click()
+        wd.find_element_by_name("edit").click()
+        text = wd.get_attribute("group_header")
+        return text
