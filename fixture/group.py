@@ -5,6 +5,7 @@ class GroupHelper:
     def __init__(self, app):
         self.app = app
 
+
     def open_groups_page(self):
         wd = self.app.wd
         wd.find_element_by_link_text("groups").click()
@@ -87,10 +88,3 @@ class GroupHelper:
         self.open_groups_page()
         return len(wd.find_elements_by_name("selected[]"))
 
-    def count_head(self):
-        wd = self.app.wd
-        self.open_groups_page()
-        wd.find_element_by_name("selected[]").click()
-        wd.find_element_by_name("edit").click()
-        text = wd.get_attribute("group_header")
-        return text
