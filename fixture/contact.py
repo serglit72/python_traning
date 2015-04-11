@@ -8,6 +8,7 @@ class ContactHelper:
 
     def create_c(self, Contact):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_element_by_link_text("add new").click()
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
@@ -56,17 +57,20 @@ class ContactHelper:
 
     def open_contact_page(self):
         wd = self.app.wd
-        wd.get("http://localhost/addressbook/")
-        wd.find_element_by_name("selected[]").click()
+        if not (wd.current_url.endswith("http://localhost/addressbook/")):
+            wd.get("http://localhost/addressbook/")
+        if (wd.find_elements_by_name("selected[]"))==0:
+            wd.find_element_by_xpath("home").click()
 
     def contact_delete(self):
         wd = self.app.wd
-        self.open_contact_page()
+        wd.find_element_by_name("selected[]").click()
         wd.find_element_by_xpath("//div[@id='content']/form[2]/div[2]/input").click()
         wd.switch_to_alert().accept()
 
     def test_edit_contact(self):
         wd = self.app.wd
+        self.open_contact_page()
         wd.find_element_by_name("selected[]").click()
         wd.find_element_by_css_selector("img[alt=\"Edit\"]").click()
         wd.find_element_by_name("firstname").click()
@@ -86,5 +90,4 @@ class ContactHelper:
 
     def count(self):
         wd = self.app.wd
-        wd.get("http://localhost/addressbook/")
         return len(wd.find_elements_by_name("selected[]"))
