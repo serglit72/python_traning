@@ -38,29 +38,24 @@ class ContactHelper:
         wd.find_element_by_name("email").click()
         wd.find_element_by_name("email").clear()
         wd.find_element_by_name("email").send_keys(Contact.email)
+ #       if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[3]").is_selected():
+ #           wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[3]").click()
+  #      if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").is_selected():
+  #          wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").click()
+        wd.find_element_by_name("address2").click()
+        wd.find_element_by_name("address2").clear()
+        wd.find_element_by_name("address2").send_keys("Russian Federation")
+        wd.find_element_by_name("phone2").click()
+        wd.find_element_by_name("phone2").clear()
+        wd.find_element_by_name("phone2").send_keys("S- Petersburg")
+        if wd.find_element_by_name("submit").click():
+            wd.find_element_by_xpath("//div[@id='content']/form[1]/input[22]").click()
 
-
-
-    def fill_boxes(self):
-        wd = self.app.wd
-        if not wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[3]").is_selected():
-            wd.find_element_by_xpath("//div[@id='content']/form/select[1]//option[3]").click()
-        if not wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").is_selected():
-            wd.find_element_by_xpath("//div[@id='content']/form/select[2]//option[2]").click()
-
-    def fill_end_form(self):
-        wd = self.app.wd
-        wd.find_element_by_name("byear").click()
-        wd.find_element_by_name("byear").clear()
-        wd.find_element_by_name("byear").send_keys("1970")
-        wd.find_element_by_name("submit").click()
 
     def open_contact_page(self):
         wd = self.app.wd
         if not (wd.current_url.endswith("http://localhost/addressbook/")):
             wd.get("http://localhost/addressbook/")
-        if (wd.find_elements_by_name("selected[]"))==0:
-            wd.find_element_by_xpath("home").click()
 
     def contact_delete(self):
         wd = self.app.wd
