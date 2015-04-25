@@ -1,4 +1,5 @@
 __author__ = 'Sergei'
+from model.contact import Contact
 
 class ContactHelper:
 
@@ -86,3 +87,26 @@ class ContactHelper:
     def count(self):
         wd = self.app.wd
         return len(wd.find_elements_by_name("selected[]"))
+
+    def count_first(self):
+        wd = self.app.wd
+        self.open_contact_page()
+#        wd.find_elements_by_css_selector('tr.entry')
+        return len(wd.find_elements_by_name("selected[]"))
+
+
+
+    contact_cache = None
+
+    def get_contact_list(self):
+        if self.contact_cache is None:
+            wd = self.app.wd
+            self.open_contact_page()
+            self.contact_cache = []
+            for element in wd.find_elements_by_css_selector('tr.entry'):
+#                text = element.text
+                id = element.find_element_by_name("selected[]").get_attribute("value")
+                self.contact_cache.append(Contact(id=id))
+        return list(self.contact_cache)
+
+
