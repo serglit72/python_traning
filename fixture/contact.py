@@ -91,22 +91,30 @@ class ContactHelper:
     def count_first(self):
         wd = self.app.wd
         self.open_contact_page()
-#        wd.find_elements_by_css_selector('tr.entry')
+#        wd.find_elements_by_name('entry')
         return len(wd.find_elements_by_name("selected[]"))
 
-
-
-    contact_cache = None
-
     def get_contact_list(self):
-        if self.contact_cache is None:
-            wd = self.app.wd
-            self.open_contact_page()
-            self.contact_cache = []
-            for element in wd.find_elements_by_css_selector('tr.entry'):
+        wd = self.app.wd
+        self.open_contact_page()
+        contacts = []
+        for element in wd.find_elements_by_name('entry'):
+            text = element.text
+            id = element.find_element_by_name("selected[]").get_attribute("value")
+            contacts.append(Contact(first_n=text, id=id))
+        return contacts
+
+#    contact_cache = None
+
+#    def get_contact_list(self):
+#        if self.contact_cache is None:
+#            wd = self.app.wd
+#            self.open_contact_page()
+#            self.contact_cache = []
+#            for element in wd.find_elements_by_name('entry'):
 #                text = element.text
-                id = element.find_element_by_name("selected[]").get_attribute("value")
-                self.contact_cache.append(Contact(id=id))
-        return list(self.contact_cache)
+#                id = element.find_element_by_name("selected[]").get_attribute("value")
+#                self.contact_cache.append(Contact(id=id,first_n=text))
+ #       return list(self.contact_cache)
 
 
