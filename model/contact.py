@@ -19,13 +19,15 @@ class Contact:
     def __repr__(self):
         return "%s:%s" % ( self.id, self.first_n)
 
-#это сравнение логическое двух значений по смыслу
+#это сравнение логическое  значений по смыслу
     def __eq__(self, other):
-        return self.id == other.id and  self.first_n == other.first_n
-
+        return (self.id is None or other.id is None or self.id == other.id and self.first_n == other.first_n and
+        self.mid_n == other.mid_n and self.last_n == other.last_n and self.nick_n == other.nick_n and self.company == other.company and
+        self.address == other.address and self.home_ph == other.home_ph and self.cell_ph == other.cell_ph and self.email == other.email)
 
     def id_or_max(self):
         if self.id:
+            # преобразуем идентификатор в целое число, чтобы корректно сравнивать с maxsize
             return int(self.id)
         else:
             return maxsize
